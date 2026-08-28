@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ken A. Yoshida — Electrical Engineer</title>
+<meta name="description" content="Ken A. Yoshida — Electrical Engineering undergraduate at Columbia University. Embedded systems, PCB design, power electronics, and motor control.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230F3D2E'/%3E%3Crect x='10' y='10' width='12' height='12' fill='none' stroke='%23C9A227' stroke-width='2'/%3E%3Cline x1='13' y1='4' x2='13' y2='10' stroke='%23C9A227' stroke-width='2'/%3E%3Cline x1='19' y1='4' x2='19' y2='10' stroke='%23C9A227' stroke-width='2'/%3E%3Cline x1='13' y1='22' x2='13' y2='28' stroke='%23C9A227' stroke-width='2'/%3E%3Cline x1='19' y1='22' x2='19' y2='28' stroke='%23C9A227' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4EC;
+    --paper-line: rgba(23,42,33,0.07);
+    --card:#FBFCF9;
+    --ink:#16211C;
+    --ink-soft:#4B594F;
+    --copper:#B5691E;
+    --copper-text:#8A4B14;
+    --copper-bright:#D98A3D;
+    --soldermask:#0F3D2E;
+    --soldermask-soft:#17513C;
+    --gold:#B8952E;
+    --led:#3FAE49;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size:28px 28px;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--copper-text);}
+  a:hover{color:var(--copper-bright);}
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; margin:0 0 .4em; color:var(--ink);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .container{max-width:920px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+  *:focus-visible{outline:2px solid var(--copper); outline-offset:3px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--copper-text);
+    display:block;
+    margin-bottom:.6em;
+  }
+
+  /* ---------- Top bar / edge connector nav ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,244,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--copper);
+  }
+  .topbar-inner{
+    max-width:920px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.1rem;
+    color:var(--ink); text-decoration:none; letter-spacing:.02em;
+  }
+  .edge-connector{display:flex; gap:6px; flex-wrap:wrap; list-style:none; margin:0; padding:0;}
+  .edge-connector a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.04em;
+    text-decoration:none;
+    color:var(--ink-soft);
+    background:var(--card);
+    border:1px solid rgba(23,42,33,0.15);
+    border-top:2px solid var(--gold);
+    padding:6px 9px;
+    border-radius:1px;
+    white-space:nowrap;
+  }
+  .edge-connector a:hover{color:var(--copper-text); border-top-color:var(--copper);}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; padding:96px 0 64px; overflow:hidden;}
+  .chip-ghost{
+    position:absolute; right:-40px; top:20px; width:340px; height:340px;
+    opacity:.07; pointer-events:none;
+  }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:.75rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft);
+    border:1px solid rgba(23,42,33,0.2); padding:5px 10px; border-radius:20px;
+    background:var(--card);
+    margin-bottom:22px;
+  }
+  .led{width:8px; height:8px; border-radius:50%; background:var(--led); box-shadow:0 0 6px var(--led); animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.3;}}
+
+  .name{font-size:clamp(2.4rem, 6vw, 3.6rem); line-height:1.05; font-weight:700;}
+  .tagline{
+    font-family:'IBM Plex Mono', monospace; font-size:.85rem; letter-spacing:.1em;
+    color:var(--copper-text); text-transform:uppercase; margin:10px 0 18px;
+  }
+  .hero-desc{max-width:560px; font-size:1.08rem; color:var(--ink-soft);}
+  .hero-links{display:flex; flex-wrap:wrap; gap:16px 24px; margin-top:28px; font-family:'IBM Plex Mono', monospace; font-size:.88rem;}
+  .hero-links a{text-decoration:none; border-bottom:1px solid rgba(138,75,20,0.35); padding-bottom:2px;}
+  .hero-links a:hover{border-bottom-color:var(--copper-bright);}
+
+  .title-block{
+    margin-top:56px;
+    display:inline-flex; gap:0; font-family:'IBM Plex Mono', monospace; font-size:.68rem;
+    letter-spacing:.06em; color:var(--ink-soft); border:1px solid rgba(23,42,33,0.25);
+    background:var(--card);
+  }
+  .title-block div{padding:6px 12px; border-right:1px solid rgba(23,42,33,0.25);}
+  .title-block div:last-child{border-right:none;}
+
+  /* ---------- Section headers ---------- */
+  h2.section-title{
+    font-size:1.5rem;
+    display:flex; align-items:baseline; gap:10px;
+    border-bottom:1px solid rgba(23,42,33,0.15);
+    padding-bottom:14px; margin-bottom:36px;
+  }
+  h2.section-title .pin-no{
+    font-family:'IBM Plex Mono', monospace; font-size:.85rem; color:var(--copper-text);
+    font-weight:500;
+  }
+
+  /* ---------- About ---------- */
+  .about-lede{font-size:1.12rem; max-width:680px; color:var(--ink);}
+  .fact-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    gap:1px; background:rgba(23,42,33,0.15); margin-top:36px;
+    border:1px solid rgba(23,42,33,0.15);
+  }
+  .fact{background:var(--card); padding:18px 20px;}
+  .fact .k{font-family:'IBM Plex Mono', monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); display:block; margin-bottom:6px;}
+  .fact .v{font-weight:600; font-size:.98rem;}
+
+  /* ---------- Timeline (schematic trace) ---------- */
+  .timeline{position:relative; padding-left:44px; margin-top:8px;}
+  .timeline::before{
+    content:''; position:absolute; left:15px; top:6px; bottom:6px; width:2px;
+    background-image:repeating-linear-gradient(180deg, var(--copper) 0 8px, transparent 8px 14px);
+    background-size:2px 28px; background-repeat:repeat-y;
+    animation:flow 1.6s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .timeline::before{animation:none; background-image:linear-gradient(var(--copper), var(--copper));} .led{animation:none;} }
+  @keyframes flow{ to{ background-position:0 -28px; } }
+
+  .t-item{position:relative; margin-bottom:44px;}
+  .t-item:last-child{margin-bottom:0;}
+  .t-node{
+    position:absolute; left:-44px; top:4px; width:16px; height:16px; border-radius:50%;
+    background:var(--paper); border:3px solid var(--copper);
+  }
+  .t-item.is-current .t-node{border-color:var(--led); box-shadow:0 0 0 4px rgba(63,174,73,0.18);}
+  .t-card{
+    position:relative; background:var(--card); border:1px solid rgba(23,42,33,0.15);
+    padding:22px 24px;
+  }
+  .t-card .drill{position:absolute; width:9px; height:9px; border-radius:50%; background:var(--paper); box-shadow:0 0 0 2px rgba(23,42,33,0.25);}
+  .t-card .drill.tl{top:10px; left:10px;} .t-card .drill.br{bottom:10px; right:10px;}
+  .t-ref{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--copper-text);
+    letter-spacing:.06em; margin-bottom:6px;
+  }
+  .t-card h3{font-size:1.12rem; margin-bottom:4px;}
+  .t-meta{font-family:'IBM Plex Mono', monospace; font-size:.76rem; color:var(--ink-soft); margin-bottom:12px;}
+  .t-card ul{margin:0; padding-left:20px; color:var(--ink);}
+  .t-card li{margin-bottom:6px;}
+  .badge-current{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:.62rem;
+    letter-spacing:.08em; text-transform:uppercase; color:#fff; background:var(--soldermask);
+    padding:2px 7px; border-radius:2px; margin-left:8px; vertical-align:middle;
+  }
+
+  /* ---------- Projects ---------- */
+  .project-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px;}
+  .project-card{
+    position:relative; background:var(--card); border:1px solid rgba(23,42,33,0.15);
+    padding:22px 22px 20px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .project-card:hover{border-color:var(--copper); transform:translateY(-2px);}
+  .project-card .drill{position:absolute; width:8px; height:8px; border-radius:50%; background:var(--paper); box-shadow:0 0 0 2px rgba(23,42,33,0.2);}
+  .project-card .drill.tl{top:9px; left:9px;} .project-card .drill.br{bottom:9px; right:9px;}
+  .proj-ref{font-family:'IBM Plex Mono', monospace; font-size:.7rem; color:var(--copper-text); margin-bottom:8px;}
+  .project-card h3{font-size:1.02rem; margin-bottom:8px; line-height:1.3;}
+  .project-card p{font-size:.92rem; color:var(--ink-soft); margin:0 0 14px;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .proj-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:.66rem; letter-spacing:.03em;
+    color:var(--ink-soft); border:1px solid rgba(23,42,33,0.2); padding:3px 7px; border-radius:20px;
+  }
+  .also-exploring{
+    margin-top:32px; font-size:.92rem; color:var(--ink-soft); border-left:2px solid var(--gold);
+    padding-left:16px;
+  }
+
+  /* ---------- BOM table ---------- */
+  .bom-wrap{overflow-x:auto; border:1px solid rgba(23,42,33,0.18);}
+  table.bom{width:100%; border-collapse:collapse; background:var(--card); font-size:.9rem; min-width:560px;}
+  table.bom th, table.bom td{padding:11px 16px; text-align:left; border-bottom:1px solid rgba(23,42,33,0.12);}
+  table.bom th{
+    font-family:'IBM Plex Mono', monospace; font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-soft); background:rgba(15,61,46,0.05);
+  }
+  table.bom td.ref{font-family:'IBM Plex Mono', monospace; color:var(--copper-text); white-space:nowrap;}
+  table.bom tbody tr:nth-child(even){background:rgba(23,42,33,0.025);}
+  table.bom tbody tr:hover{background:rgba(181,105,30,0.06);}
+
+  /* ---------- Coursework spec sheets ---------- */
+  .spec-sheet{border:1px solid rgba(23,42,33,0.18); background:var(--card); margin-bottom:22px;}
+  .spec-sheet:last-child{margin-bottom:0;}
+  .spec-head{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+    padding:16px 22px; border-bottom:1px solid rgba(23,42,33,0.15);
+  }
+  .spec-head h3{font-size:1.05rem; margin:0;}
+  .spec-head .gpa{font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--copper-text);}
+  .spec-body{padding:18px 22px 22px;}
+  .term{margin-bottom:16px;}
+  .term:last-child{margin-bottom:0;}
+  .term .term-label{
+    font-family:'IBM Plex Mono', monospace; font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-soft); display:block; margin-bottom:8px;
+  }
+  .course-list{list-style:none; margin:0; padding:0; display:grid; gap:6px;}
+  .course-list li{font-size:.9rem; display:flex; gap:10px;}
+  .course-list .code{font-family:'IBM Plex Mono', monospace; color:var(--ink-soft); flex-shrink:0; min-width:96px;}
+  .course-list .grade{font-family:'IBM Plex Mono', monospace; color:var(--copper-text); margin-left:auto; padding-left:12px;}
+
+  /* ---------- Honors ---------- */
+  .honors-list{list-style:none; margin:0; padding:0; display:grid; gap:14px;}
+  .honors-list li{
+    display:flex; gap:14px; align-items:flex-start; background:var(--card);
+    border:1px solid rgba(23,42,33,0.15); padding:14px 18px;
+  }
+  .honors-list .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); margin-top:7px; flex-shrink:0;}
+
+  /* ---------- Footer / pinout / contact ---------- */
+  footer{background:var(--soldermask); color:#EAF2ED; padding:80px 0 40px;}
+  footer .container{max-width:920px;}
+  footer h2.section-title{border-bottom-color:rgba(234,242,237,0.2); color:#fff;}
+  footer h2.section-title .pin-no{color:var(--gold);}
+  .pinout{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:14px; margin-bottom:48px;}
+  .pin{
+    display:flex; align-items:center; gap:12px; background:var(--soldermask-soft);
+    border:1px solid rgba(234,242,237,0.15); padding:14px 16px;
+  }
+  .pin-num{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--soldermask);
+    background:var(--gold); width:22px; height:22px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:600;
+  }
+  .pin .plabel{font-family:'IBM Plex Mono', monospace; font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(234,242,237,0.6); display:block;}
+  .pin a{color:#fff; text-decoration:none; font-size:.92rem;}
+  .pin a:hover{color:var(--gold);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:rgba(234,242,237,0.55);
+    border-top:1px solid rgba(234,242,237,0.15); padding-top:20px;
+  }
+
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    .hero{padding:72px 0 48px;}
+    .topbar-inner{padding:12px 16px;}
+    .edge-connector{gap:5px;}
+    .course-list li{flex-wrap:wrap;}
+    .course-list .grade{margin-left:0; padding-left:0;}
+  }
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand mono">KAY</a>
+    <nav class="edge-connector" aria-label="Section navigation">
+      <a href="#about">PIN1 · ABOUT</a>
+      <a href="#experience">PIN2 · EXPERIENCE</a>
+      <a href="#projects">PIN3 · PROJECTS</a>
+      <a href="#skills">PIN4 · SKILLS</a>
+      <a href="#coursework">PIN5 · COURSEWORK</a>
+      <a href="#honors">PIN6 · HONORS</a>
+      <a href="#contact">PIN7 · CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <svg class="chip-ghost" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <rect x="55" y="55" width="90" height="90" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="70" y1="55" x2="70" y2="30" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="90" y1="55" x2="90" y2="30" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="110" y1="55" x2="110" y2="30" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="130" y1="55" x2="130" y2="30" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="70" y1="145" x2="70" y2="170" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="90" y1="145" x2="90" y2="170" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="110" y1="145" x2="110" y2="170" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="130" y1="145" x2="130" y2="170" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="55" y1="70" x2="30" y2="70" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="55" y1="90" x2="30" y2="90" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="55" y1="110" x2="30" y2="110" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="55" y1="130" x2="30" y2="130" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="145" y1="70" x2="170" y2="70" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="145" y1="90" x2="170" y2="90" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="145" y1="110" x2="170" y2="110" stroke="#0F3D2E" stroke-width="3"/>
+    <line x1="145" y1="130" x2="170" y2="130" stroke="#0F3D2E" stroke-width="3"/>
+  </svg>
+  <div class="container">
+    <div class="status-pill"><span class="led"></span> STATUS: ACTIVE — UNDERGRADUATE, CLASS OF 2029</div>
+    <h1 class="name">Ken A. Yoshida</h1>
+    <p class="tagline">KAY // EE, COLUMBIA UNIVERSITY // MINOR: COMPUTER SCIENCE</p>
+    <p class="hero-desc">Embedded systems, PCB design, power electronics, and motor control — building toward IC design. Masason Foundation Scholar.</p>
+    <div class="hero-links">
+      <a href="mailto:kay2125@columbia.edu">kay2125@columbia.edu</a>
+      <a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">GitHub — add your username</a>
+    </div>
+    <div class="title-block mono">
+      <div>SHEET 1/1</div><div>REV 2026.09</div><div>DRAWN: K.YOSHIDA</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container reveal">
+    <h2 class="section-title"><span class="pin-no">PIN1</span> About</h2>
+    <p class="about-lede">Ken is an undergraduate electrical engineer at Columbia University with a hands-on focus on embedded systems, PCB design, power electronics, and motor control. His work runs from bare-board PCB bring-up to firmware for camera streaming and motor control, to power-electronics subsystems for robotics platforms — most recently the electrical systems for a vine robot at Stanford's CHARM Lab. He's currently exploring a path toward IC design research at Columbia.</p>
+    <div class="fact-grid">
+      <div class="fact"><span class="k">Program</span><span class="v">BS Electrical Engineering, Columbia, 2025–2029</span></div>
+      <div class="fact"><span class="k">Minor</span><span class="v">Computer Science</span></div>
+      <div class="fact"><span class="k">Cumulative GPA</span><span class="v">4.07 / 4.0</span></div>
+      <div class="fact"><span class="k">Scholarship</span><span class="v">Masason Foundation Scholar</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container reveal">
+    <h2 class="section-title"><span class="pin-no">PIN2</span> Experience</h2>
+    <div class="timeline">
+
+      <div class="t-item is-current">
+        <div class="t-node"></div>
+        <div class="t-card">
+          <div class="drill tl"></div><div class="drill br"></div>
+          <div class="t-ref mono">U1</div>
+          <h3>Research Intern — CHARM Lab, Stanford University<span class="badge-current">Current</span></h3>
+          <div class="t-meta mono">Palo Alto, CA · May 2026 – Aug 2026</div>
+          <ul>
+            <li>Designed electrical systems for a vine robotic platform for pipe inspection, under Prof. Allison Okamura</li>
+            <li>Built a power-management and motor-control PCB (CAN for motor control, I2C for sensors) and a custom analog front end for 1&nbsp;MHz ultrasonic transducers used in underwater localization</li>
+            <li>Developed a multi-board ESP32 camera streaming system targeting live 1080p@30fps H.264 encoding over TCP</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item is-current">
+        <div class="t-node"></div>
+        <div class="t-card">
+          <div class="drill tl"></div><div class="drill br"></div>
+          <div class="t-ref mono">U2</div>
+          <h3>Low Voltage Electronics Lead — Columbia University Formula SAE<span class="badge-current">Current</span></h3>
+          <div class="t-meta mono">New York, NY · Nov 2025 – Present</div>
+          <ul>
+            <li>Develop the low-voltage electronics systems for the team's formula racing car</li>
+            <li>Designed a custom PCB that automated shutdown-circuit testing, cutting test time by roughly 30x over the previous manual method</li>
+            <li>Simulate circuits in LTspice, lay out boards in Altium, and write firmware in C</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-node"></div>
+        <div class="t-card">
+          <div class="drill tl"></div><div class="drill br"></div>
+          <div class="t-ref mono">U3</div>
+          <h3>Research Intern — PlantVillage</h3>
+          <div class="t-meta mono">State College, PA · Oct 2023 – Oct 2025</div>
+          <ul>
+            <li>Built two patent-pending IoT devices that measure, log, and transmit kiln temperatures above 500°F for farmers producing biochar</li>
+            <li>Enabled months of unattended, off-grid operation by optimizing on-device storage through data downsampling, syncing logs to a custom Android app over Bluetooth</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-node"></div>
+        <div class="t-card">
+          <div class="drill tl"></div><div class="drill br"></div>
+          <div class="t-ref mono">U4</div>
+          <h3>Researcher — Juniata College</h3>
+          <div class="t-meta mono">Huntingdon, PA · Nov 2023 – May 2025</div>
+          <ul>
+            <li>Studied the geometric and electronic properties of monolayer iron on a 6H-SiC substrate using density functional theory (QuantumATK), advised by Prof. William Blades</li>
+            <li>Placed 1st at the Capital Area Science and Engineering Fair and 2nd in Physical Science at the Pennsylvania Junior Science &amp; Humanities Symposium</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-node"></div>
+        <div class="t-card">
+          <div class="drill tl"></div><div class="drill br"></div>
+          <div class="t-ref mono">U5</div>
+          <h3>President &amp; Mechanical Systems Lead — FIRST Robotics / Centre County 4-H Robotics Club</h3>
+          <div class="t-meta mono">State College, PA · Sep 2021 – May 2025</div>
+          <ul>
+            <li>Co-led a 150+ member robotics club, directing subsystem CAD (Onshape) and manufacturing to keep systems integration on track</li>
+            <li>Reached the finals of the FIRST NYC Regional (2025) and the Dean's List Semifinals (2024)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container reveal">
+    <h2 class="section-title"><span class="pin-no">PIN3</span> Selected Projects</h2>
+    <div class="project-grid">
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P01</div>
+        <h3>ESP32-P4 H.264 Camera Stream</h3>
+        <p>A multi-board embedded video pipeline targeting live 1080p@30fps hardware H.264 encoding over TCP, on a Waveshare ESP32-P4+C6 combo board with an OV5647 sensor — including working through an early-silicon revision and a repeatable build ritual for every new example.</p>
+        <div class="proj-tags"><span>ESP32-P4</span><span>H.264</span><span>ESP-IDF</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P02</div>
+        <h3>Vine Robot Electronics</h3>
+        <p>Power-management and motor-control PCB for a pipe-inspection vine robot, routing CAN for motor control and I2C for sensors, alongside a custom analog front end for 1&nbsp;MHz ultrasonic transducers used in underwater localization.</p>
+        <div class="proj-tags"><span>PCB Design</span><span>CAN</span><span>Ultrasonic Sensing</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P03</div>
+        <h3>Formula SAE Shutdown-Circuit Tester</h3>
+        <p>A custom PCB that automates testing of the car's shutdown circuit, replacing a manual process and cutting test time by roughly 30x — designed in Altium, simulated in LTspice, and driven by custom C firmware.</p>
+        <div class="proj-tags"><span>Altium</span><span>LTspice</span><span>C Firmware</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P04</div>
+        <h3>Dual BLDC + Stepper Control Rig</h3>
+        <p>An ESP32-S3 rig driving an A4988 stepper (calibrated to 0.988&nbsp;mm/rev) alongside two AK-series BLDC motors over 1&nbsp;Mbit CAN, controlled through a Python/Tkinter GUI with live telemetry and integrated temperature, encoder, and FRAM sensing.</p>
+        <div class="proj-tags"><span>ESP32-S3</span><span>CAN / TWAI</span><span>Python · Tkinter</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P05</div>
+        <h3>48V Power Electronics Subsystem</h3>
+        <p>Bus protection and motor-drive electronics for a 48V/18A system: a latching TPS16851 eFuse, a DRV8876 brushed-motor driver with regenerative-braking analysis, LMR51625 buck regulators, and evaluation of a thermal circuit breaker.</p>
+        <div class="proj-tags"><span>eFuse</span><span>Buck Converters</span><span>Motor Drivers</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P06</div>
+        <h3>Ultrasonic Time-of-Flight Ranging</h3>
+        <p>A time-of-flight ranging system built around a TDC1000-C2000 EVM, with 1&nbsp;MHz signal generation from an Arduino Mega timer and a diode/RC envelope detector for dual-channel echo detection — early groundwork for underwater localization on the vine robot.</p>
+        <div class="proj-tags"><span>TDC1000 / TDC2000</span><span>Analog Front End</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P07</div>
+        <h3>SBC Camera Streaming Benchmarks</h3>
+        <p>A comparative study of camera streaming pipelines across four single-board computers, finding WebRTC-via-mediamtx latency of ~150–200ms versus ~1.3s for RTSP, and working around ISP and pipeline bugs along the way.</p>
+        <div class="proj-tags"><span>Embedded Linux</span><span>WebRTC</span><span>RTSP</span></div>
+      </article>
+
+      <article class="project-card">
+        <div class="drill tl"></div><div class="drill br"></div>
+        <div class="proj-ref mono">P08</div>
+        <h3>Custom ESP32-S3 PCB Bring-Up</h3>
+        <p>Brought a custom ESP32-S3 board up from bare PCB, tracing a USB enumeration loop to an EN-line brownout, configuring strapping pins, and building out KiCad footprint and 3D-model workflows for future revisions.</p>
+        <div class="proj-tags"><span>KiCad</span><span>Hardware Debug</span></div>
+      </article>
+
+    </div>
+    <p class="also-exploring">Also exploring: IC design research directions with Columbia's Analog IC group, quantum computing coursework, and a small GPT-based agent that scrapes weekly physical UI/UX developments into an SMS digest.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container reveal">
+    <h2 class="section-title"><span class="pin-no">PIN4</span> Bill of Materials — Skills</h2>
+    <div class="bom-wrap">
+      <table class="bom">
+        <thead>
+          <tr><th>Ref</th><th>Description</th><th>Category</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ref mono">U1</td><td>Altium Designer</td><td>PCB Design</td><td>Schematic capture and layout, multi-layer boards</td></tr>
+          <tr><td class="ref mono">U2</td><td>KiCad</td><td>PCB Design</td><td>Footprint and 3D-model workflows</td></tr>
+          <tr><td class="ref mono">U3</td><td>LTspice</td><td>Simulation</td><td>SPICE simulation for power and analog circuits</td></tr>
+          <tr><td class="ref mono">U4</td><td>ESP-IDF / ESP32 (S3, C6, P4)</td><td>Embedded Firmware</td><td>RTOS, TWAI/CAN, Wi-Fi, camera pipelines</td></tr>
+          <tr><td class="ref mono">U5</td><td>C / C++</td><td>Firmware</td><td>Bare-metal and RTOS application code</td></tr>
+          <tr><td class="ref mono">U6</td><td>Python</td><td>Tooling</td><td>Tkinter GUIs, data pipelines, serial/CAN tooling</td></tr>
+          <tr><td class="ref mono">U7</td><td>QuantumATK (DFT)</td><td>Computational Materials</td><td>Density functional theory modeling</td></tr>
+          <tr><td class="ref mono">U8</td><td>CAN / TWAI Bus</td><td>Protocols</td><td>Motor control networks, CANalyst-II tooling</td></tr>
+          <tr><td class="ref mono">U9</td><td>Power Electronics</td><td>Analog / Power</td><td>eFuses, buck converters, motor drivers, protection</td></tr>
+          <tr><td class="ref mono">U10</td><td>Onshape</td><td>Mechanical CAD</td><td>Subsystem design and integration</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="coursework">
+  <div class="container reveal">
+    <h2 class="section-title"><span class="pin-no">PIN5</span> Coursework</h2>
+
+    <div class="spec-sheet">
+      <div class="spec-head">
+        <h3>Columbia University</h3>
+        <span class="gpa mono">GPA 4.07 / 4.0</span>
+      </div>
+      <div class="spec-body">
+        <div class="term">
+          <span class="term-label">Current</span>
+          <ul class="course-list">
+            <li><span>Fundamentals of Computer Systems</span></li>
+            <li><span>Signals and Systems</span></li>
+            <li><span>Circuit Analysis</span></li>
+            <li><span>Solid State Electronics</span></li>
+          </ul>
+        </div>
+        <div class="term">
+          <span class="term-label">Semester II</span>
+          <ul class="course-list">
+            <li><span class="code">ELEN3331</span><span>Electronic Circuits</span></li>
+            <li><span class="code">ELEN3083E</span><span>Electronic Circuits Laboratory</span></li>
+            <li><span class="code">APMA2101E</span><span>Intro to Applied Mathematics (Diff. Eq. &amp; Linear Algebra)</span></li>
+            <li><span class="code">COMS3134W</span><span>Data Structures in Java</span></li>
+            <li><span class="code">PHYS1602</span><span>Physics II: Thermo, Electricity &amp; Magnetism</span></li>
+          </ul>
+        </div>
+        <div class="term">
+          <span class="term-label">Semester I</span>
+          <ul class="course-list">
+            <li><span class="code">ELEN1201</span><span>Intro to Electrical Engineering</span><span class="grade">A+</span></li>
+            <li><span class="code">APMA2000</span><span>Multivariable Calculus for Engineers</span><span class="grade">A+</span></li>
+            <li><span class="code">COMS1004</span><span>Intro to CS / Programming in Java</span><span class="grade">A</span></li>
+            <li><span class="code">PHYS1601</span><span>Physics I: Mechanics and Relativity</span><span class="grade">A+</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-sheet">
+      <div class="spec-head">
+        <h3>Stanford Online High School</h3>
+        <span class="gpa mono">GPA 3.98 / 4.0</span>
+      </div>
+      <div class="spec-body">
+        <div class="term">
+          <span class="term-label">University-level coursework</span>
+          <ul class="course-list">
+            <li><span>Quantum Computing (Physics)</span><span class="grade">A</span></li>
+            <li><span>Complex Analysis (Math)</span><span class="grade">A</span></li>
+            <li><span>Real Analysis (Math)</span><span class="grade">A</span></li>
+            <li><span>Modern Physics</span><span class="grade">A</span></li>
+            <li><span>Differential Equations</span><span class="grade">A</span></li>
+            <li><span>Linear Algebra</span><span class="grade">A</span></li>
+            <li><span>Light and Heat (Physics)</span><span class="grade">A</span></li>
+            <li><span>Advanced Topics in CS: Computer Systems</span><span class="grade">A</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="honors">
+  <div class="container reveal">
+    <h2 class="section-title"><span class="pin-no">PIN6</span> Honors</h2>
+    <ul class="honors-list">
+      <li><span class="dot"></span><div>Masason Foundation Scholar — full-ride undergraduate scholarship with research funding, since 2021</div></li>
+      <li><span class="dot"></span><div>1st Place, Capital Area Science and Engineering Fair — DFT research on monolayer iron on 6H-SiC</div></li>
+      <li><span class="dot"></span><div>2nd Place, Physical Science, Pennsylvania Junior Science &amp; Humanities Symposium</div></li>
+      <li><span class="dot"></span><div>FIRST Robotics — NYC Regional Finals (2025), Dean's List Semifinals (2024)</div></li>
+    </ul>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <h2 class="section-title"><span class="pin-no">PIN7</span> Contact — Pinout</h2>
+    <div class="pinout">
+      <div class="pin">
+        <span class="pin-num">1</span>
+        <div><span class="plabel">Email</span><a href="mailto:kay2125@columbia.edu">kay2125@columbia.edu</a></div>
+      </div>
+      <div class="pin">
+        <span class="pin-num">2</span>
+        <div><span class="plabel">Email</span><a href="mailto:ken.a.yosh@gmail.com">ken.a.yosh@gmail.com</a></div>
+      </div>
+      <div class="pin">
+        <span class="pin-num">3</span>
+        <div><span class="plabel">LinkedIn</span><a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">/in/ken-yoshida-a84a0724b</a></div>
+      </div>
+      <div class="pin">
+        <span class="pin-num">4</span>
+        <div><span class="plabel">GitHub</span><a href="#" target="_blank" rel="noopener">add your username here</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ken A. Yoshida</span>
+      <span>SHEET 1/1 · REV 2026.09</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Subtle scroll reveal — progressive enhancement only, no functional dependency.
+  if ('IntersectionObserver' in window) {
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
