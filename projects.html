@@ -8,7 +8,7 @@
   <meta http-equiv="Expires" content="0">
   <title>Ken A. Yoshida — Projects</title>
   <meta name="description" content="Hardware, PCB design, embedded systems, firmware, and computational physics projects by Ken A. Yoshida.">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -57,34 +57,16 @@
 
       <div class="entry">
         <div class="entry-header">
-          <h3>ESP32-P4 H.264 Camera Stream</h3>
-          <span class="entry-date">2026</span>
-        </div>
-        <p class="entry-desc">
-          A multi-board embedded video pipeline targeting live 1080p@30fps hardware H.264 video encoding over TCP. Implemented on a Waveshare ESP32-P4 + ESP32-C6 combo board paired with an OV5647 CSI camera sensor, resolving early-silicon errata and establishing a reliable, repeatable build workflow for high-throughput embedded streaming.
-        </p>
-        <ul class="tag-list">
-          <li class="tag">ESP32-P4</li>
-          <li class="tag">ESP-IDF</li>
-          <li class="tag">H.264</li>
-          <li class="tag">TCP/IP</li>
-          <li class="tag">C/C++</li>
-          <li class="tag">Bring-Up</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <h3>Vine Robot Electronics &amp; Underwater AFE</h3>
+          <h3>Vine Robot Electronics, Video Streaming &amp; Ultrasonic Localization</h3>
           <span class="entry-date">Stanford CHARM Lab &middot; 2026</span>
         </div>
         <p class="entry-desc">
-          Engineered electrical systems for a soft vine robotic platform designed for pipe inspection under Prof. Allison Okamura. Designed a compact power-management and motor-control PCB routing CAN for high-reliability motor control and I2C for environmental sensors. Built a custom analog front end (AFE) for 1 MHz ultrasonic transducers to enable acoustic localization in low-visibility underwater environments.
+          Engineered electrical systems and control electronics for a soft vine robotic system designed for pipe inspection under Prof. Allison Okamura. Designed a power-management and motor-control PCB routing CAN for high-reliability actuation and I2C for environmental sensors. Engineered compact (&lt;1.5"&times;1") PCBs for wireless and Power over Ethernet (PoE) H.264 video streaming, and developed a custom 1 MHz ultrasonic transducer analog front-end (AFE) for acoustic localization inside confined pipe networks.
         </p>
         <ul class="tag-list">
           <li class="tag">Altium Designer</li>
           <li class="tag">CAN Bus</li>
-          <li class="tag">I2C</li>
+          <li class="tag">PoE / Wi-Fi</li>
           <li class="tag">Ultrasonic AFE</li>
           <li class="tag">ESP32</li>
           <li class="tag">Robotics</li>
@@ -93,18 +75,36 @@
 
       <div class="entry">
         <div class="entry-header">
-          <h3>Formula SAE Shutdown-Circuit Automated Tester</h3>
-          <span class="entry-date">Columbia Formula SAE &middot; 2025 – Present</span>
+          <h3>Formula SAE Electric Low-Voltage Control &amp; Shutdown Circuit Tester</h3>
+          <span class="entry-date">Columbia University Formula Racing &middot; 2025 – Present</span>
         </div>
         <p class="entry-desc">
-          Designed a dedicated test PCB to automate end-to-end verification of the formula racecar's high-voltage safety shutdown loop. Replaced manual multi-point probing, reducing comprehensive pre-race testing time by approximately 30x while increasing fault diagnosis accuracy. Simulated in LTspice, designed in Altium Designer, and driven by modular C firmware.
+          Lead the PCB design, manufacturing, and validation testing for all low-voltage control electronics on the formula racing car competing in the Formula SAE Electric competition. Designed custom PCBs in Altium Designer, ran SPICE simulations in LTspice, and wrote custom C firmware to automate shutdown-circuit verification, improving testing speed 30x over manual methods.
         </p>
         <ul class="tag-list">
           <li class="tag">Altium Designer</li>
           <li class="tag">LTspice</li>
           <li class="tag">C Firmware</li>
-          <li class="tag">Automotive Safety</li>
-          <li class="tag">FSAE</li>
+          <li class="tag">FSAE Electric</li>
+          <li class="tag">PCB Manufacturing</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>ESP32-P4 H.264 Camera Stream Pipeline</h3>
+          <span class="entry-date">2026</span>
+        </div>
+        <p class="entry-desc">
+          A multi-board embedded video pipeline targeting live 1080p@30fps hardware H.264 video encoding over TCP. Implemented on a Waveshare ESP32-P4 + ESP32-C6 combo board paired with an OV5647 CSI camera sensor, resolving early-silicon errata and establishing a reliable build workflow for high-throughput embedded streaming.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">ESP32-P4</li>
+          <li class="tag">ESP-IDF</li>
+          <li class="tag">H.264</li>
+          <li class="tag">TCP/IP</li>
+          <li class="tag">C/C++</li>
+          <li class="tag">Bring-Up</li>
         </ul>
       </div>
 
@@ -175,7 +175,7 @@
         <ul class="tag-list">
           <li class="tag">Analog Front-End</li>
           <li class="tag">TDC1000</li>
-          <li class="signal Conditioning">Signal Conditioning</li>
+          <li class="tag">Signal Conditioning</li>
           <li class="tag">Arduino Mega</li>
           <li class="tag">Acoustics</li>
         </ul>
