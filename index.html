@@ -1,341 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ken A. Yoshida</title>
-<meta name="description" content="Ken A. Yoshida — Electrical Engineering undergraduate at Columbia University. Embedded systems, PCB design, power electronics, and motor control.">
-<style>
-  :root{
-    --bg:#ffffff;
-    --text:#24292f;
-    --text-secondary:#57606a;
-    --border:#d8dee4;
-    --link:#0969da;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height:1.6;
-    font-size:16px;
-  }
-  a{color:var(--link); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  h1,h2,h3{font-weight:600; line-height:1.3;}
-  *:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
-
-  .site-header{
-    position:sticky; top:0; background:var(--bg);
-    border-bottom:1px solid var(--border);
-    z-index:10;
-  }
-  .header-inner{
-    max-width:1040px; margin:0 auto; padding:14px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-    flex-wrap:wrap; gap:10px 20px;
-  }
-  .site-title{font-weight:600; color:var(--text); font-size:1rem;}
-  .site-title:hover{text-decoration:none; color:var(--link);}
-  .site-nav{display:flex; flex-wrap:wrap; gap:18px;}
-  .site-nav a{color:var(--text-secondary); font-size:.92rem;}
-  .site-nav a:hover{color:var(--link);}
-
-  .layout{
-    max-width:1040px; margin:0 auto; padding:48px 24px 80px;
-    display:grid; grid-template-columns:220px 1fr; gap:56px;
-  }
-
-  .sidebar{ }
-  .avatar{
-    width:88px; height:88px; border-radius:50%;
-    background:#24292f; color:#fff; display:flex; align-items:center; justify-content:center;
-    font-size:1.6rem; font-weight:600; margin-bottom:16px;
-  }
-  .sidebar h1{font-size:1.25rem; margin:0 0 4px;}
-  .sidebar .role{font-size:.92rem; color:var(--text-secondary); margin:0 0 20px;}
-  .meta-list, .social-list{list-style:none; margin:0 0 20px; padding:0; font-size:.9rem;}
-  .meta-list li{color:var(--text-secondary); margin-bottom:4px;}
-  .social-list li{margin-bottom:4px;}
-
-  main{min-width:0;}
-  section{margin-bottom:56px;}
-  section:last-child{margin-bottom:0;}
-  section h2{
-    font-size:1.15rem; text-transform:uppercase; letter-spacing:.04em;
-    border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:24px;
-  }
-
-  .about-text{max-width:640px;}
-
-  .entry{padding-bottom:24px; margin-bottom:24px; border-bottom:1px solid var(--border);}
-  .entry:last-child{border-bottom:none; margin-bottom:0; padding-bottom:0;}
-  .entry h3{font-size:1.02rem; margin:0 0 4px;}
-  .entry .entry-date{font-size:.85rem; color:var(--text-secondary); margin:0 0 2px;}
-  .entry .entry-venue{font-size:.9rem; color:var(--text-secondary); font-style:italic; margin:0 0 10px;}
-  .entry ul{margin:0; padding-left:20px;}
-  .entry li{margin-bottom:4px;}
-  .entry p.entry-desc{margin:0;}
-
-  .skill-line{margin-bottom:10px;}
-  .skill-line:last-child{margin-bottom:0;}
-  .skill-line strong{font-weight:600;}
-
-  .course-block{margin-bottom:28px;}
-  .course-block:last-child{margin-bottom:0;}
-  .course-block h3{font-size:1rem; margin:0 0 2px;}
-  .course-block .gpa{font-size:.88rem; color:var(--text-secondary); margin:0 0 14px;}
-  .course-term{margin-bottom:14px;}
-  .course-term:last-child{margin-bottom:0;}
-  .course-term .term-label{font-size:.82rem; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:6px;}
-  .course-term ul{margin:0; padding-left:20px;}
-  .course-term li{margin-bottom:3px;}
-
-  .honors-list{margin:0; padding-left:20px;}
-  .honors-list li{margin-bottom:8px;}
-
-  .contact-list{list-style:none; margin:0; padding:0;}
-  .contact-list li{margin-bottom:6px;}
-
-  @media (max-width:720px){
-    .layout{grid-template-columns:1fr; gap:32px; padding:32px 20px 64px;}
-    .sidebar{display:flex; flex-direction:column;}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ken A. Yoshida — Introduction</title>
+  <meta name="description" content="Ken A. Yoshida — Electrical Engineering undergraduate at Columbia University. Embedded systems, PCB design, power electronics, and motor control.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="#top" class="site-title">Ken A. Yoshida</a>
-    <nav class="site-nav" aria-label="Section navigation">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#coursework">Coursework</a>
-      <a href="#honors">Honors</a>
-      <a href="#contact">Contact</a>
+    <a href="index.html" class="site-title">Ken A. Yoshida</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="active" aria-current="page">Introduction</a>
+      <a href="awards.html">Awards</a>
+      <a href="projects.html">Projects</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="resume.html">Resume</a>
     </nav>
   </div>
 </header>
 
-<div id="top" class="layout">
+<div class="layout">
 
   <aside class="sidebar">
-    <div class="avatar">KY</div>
-    <h1>Ken A. Yoshida</h1>
-    <p class="role">Electrical Engineering, Columbia University</p>
-    <ul class="meta-list">
-      <li>New York, NY</li>
-      <li>Columbia University</li>
-      <li>Class of 2029</li>
-    </ul>
-    <ul class="social-list">
-      <li><a href="mailto:kay2125@columbia.edu">Email (Columbia)</a></li>
-      <li><a href="mailto:ken.a.yosh@gmail.com">Email (personal)</a></li>
-      <li><a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="#" target="_blank" rel="noopener">GitHub — add your username</a></li>
-    </ul>
+    <div class="sidebar-sticky">
+      <div class="avatar" aria-label="Ken A. Yoshida initials">KY</div>
+      <h1>Ken A. Yoshida</h1>
+      <p class="role">Electrical Engineering &amp; Computer Science<br>Columbia University</p>
+      <ul class="meta-list">
+        <li><span>📍</span> New York, NY</li>
+        <li><span>🏛️</span> Columbia University</li>
+        <li><span>🎓</span> Class of 2029</li>
+      </ul>
+      <ul class="social-list">
+        <li><a href="mailto:kay2125@columbia.edu">✉️ Email (Columbia)</a></li>
+        <li><a href="mailto:ken.a.yosh@gmail.com">✉️ Email (Personal)</a></li>
+        <li><a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">💼 LinkedIn</a></li>
+        <li><a href="https://github.com/kenayoshi" target="_blank" rel="noopener">🐙 GitHub</a></li>
+      </ul>
+    </div>
   </aside>
 
   <main>
 
-    <section id="about">
-      <h2>About</h2>
-      <p class="about-text">Ken is an undergraduate electrical engineer at Columbia University (BS, 2025–2029), minoring in computer science, with a cumulative GPA of 4.07/4.0. He's a Masason Foundation Scholar with a hands-on focus on embedded systems, PCB design, power electronics, and motor control — work that runs from bare-board PCB bring-up to firmware for camera streaming and motor control, to power-electronics subsystems for robotics platforms, most recently the electrical systems for a vine robot at Stanford's CHARM Lab. He's currently exploring a path toward IC design research at Columbia.</p>
+    <div class="page-header">
+      <h2>Introduction</h2>
+      <p class="page-desc">Undergraduate electrical engineer &amp; researcher at Columbia University</p>
+    </div>
+
+    <section id="bio">
+      <h2>About Me</h2>
+      <p class="about-text">
+        I am an undergraduate Electrical Engineering student at <strong>Columbia University</strong> (BS, 2025–2029) minoring in Computer Science, with a cumulative GPA of 4.07/4.0. I am also a <strong>Masayoshi Son Foundation Scholar</strong>.
+      </p>
+      <p class="about-text">
+        My primary technical interests center on <strong>embedded systems, custom PCB design, power electronics, and motor control</strong>. My work spans the full stack of hardware engineering: from bare-board bring-up, signal integrity, and analog front-end design to low-level firmware for high-throughput video streaming, sensor fusion, and multi-axis motor control.
+      </p>
+      <p class="about-text">
+        Most recently, I researched and engineered electrical systems for vine robotics platforms at <strong>Stanford University's CHARM Lab</strong> under Prof. Allison Okamura, and I currently lead low-voltage electronics development for the <strong>Columbia University Formula SAE</strong> racing team. I am also exploring a research path toward integrated circuit (IC) design at Columbia.
+      </p>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="entry">
-        <h3>Research Intern, CHARM Lab, Stanford University</h3>
-        <p class="entry-date">May 2026 – Aug 2026</p>
-        <p class="entry-venue">Palo Alto, CA</p>
-        <ul>
-          <li>Designed electrical systems for a vine robotic platform for pipe inspection, under Prof. Allison Okamura</li>
-          <li>Built a power-management and motor-control PCB (CAN for motor control, I2C for sensors) and a custom analog front end for 1 MHz ultrasonic transducers used in underwater localization</li>
-          <li>Developed a multi-board ESP32 camera streaming system targeting live 1080p@30fps H.264 encoding over TCP</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>Low Voltage Electronics Lead, Columbia University Formula SAE</h3>
-        <p class="entry-date">Nov 2025 – Present</p>
-        <p class="entry-venue">New York, NY</p>
-        <ul>
-          <li>Develop the low-voltage electronics systems for the team's formula racing car</li>
-          <li>Designed a custom PCB that automated shutdown-circuit testing, cutting test time by roughly 30x over the previous manual method</li>
-          <li>Simulate circuits in LTspice, lay out boards in Altium, and write firmware in C</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>Research Intern, PlantVillage</h3>
-        <p class="entry-date">Oct 2023 – Oct 2025</p>
-        <p class="entry-venue">State College, PA</p>
-        <ul>
-          <li>Built two patent-pending IoT devices that measure, log, and transmit kiln temperatures above 500°F for farmers producing biochar</li>
-          <li>Enabled months of unattended, off-grid operation by optimizing on-device storage through data downsampling, syncing logs to a custom Android app over Bluetooth</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>Researcher, Juniata College</h3>
-        <p class="entry-date">Nov 2023 – May 2025</p>
-        <p class="entry-venue">Huntingdon, PA</p>
-        <ul>
-          <li>Studied the geometric and electronic properties of monolayer iron on a 6H-SiC substrate using density functional theory (QuantumATK), advised by Prof. William Blades</li>
-          <li>Placed 1st at the Capital Area Science and Engineering Fair and 2nd in Physical Science at the Pennsylvania Junior Science &amp; Humanities Symposium</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <h3>President &amp; Mechanical Systems Lead, FIRST Robotics / Centre County 4-H Robotics Club</h3>
-        <p class="entry-date">Sep 2021 – May 2025</p>
-        <p class="entry-venue">State College, PA</p>
-        <ul>
-          <li>Co-led a 150+ member robotics club, directing subsystem CAD (Onshape) and manufacturing to keep systems integration on track</li>
-          <li>Reached the finals of the FIRST NYC Regional (2025) and the Dean's List Semifinals (2024)</li>
-        </ul>
-      </div>
-
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-
-      <div class="entry">
-        <h3>ESP32-P4 H.264 Camera Stream</h3>
-        <p class="entry-desc">A multi-board embedded video pipeline targeting live 1080p@30fps hardware H.264 encoding over TCP, on a Waveshare ESP32-P4+C6 combo board with an OV5647 sensor — including working through an early-silicon revision and a repeatable build process for every new example.</p>
-      </div>
-
-      <div class="entry">
-        <h3>Vine Robot Electronics</h3>
-        <p class="entry-desc">Power-management and motor-control PCB for a pipe-inspection vine robot, routing CAN for motor control and I2C for sensors, alongside a custom analog front end for 1 MHz ultrasonic transducers used in underwater localization.</p>
-      </div>
-
-      <div class="entry">
-        <h3>Formula SAE Shutdown-Circuit Tester</h3>
-        <p class="entry-desc">A custom PCB that automates testing of the car's shutdown circuit, replacing a manual process and cutting test time by roughly 30x — designed in Altium, simulated in LTspice, and driven by custom C firmware.</p>
-      </div>
-
-      <div class="entry">
-        <h3>Dual BLDC + Stepper Control Rig</h3>
-        <p class="entry-desc">An ESP32-S3 rig driving an A4988 stepper (calibrated to 0.988 mm/rev) alongside two AK-series BLDC motors over 1 Mbit CAN, controlled through a Python/Tkinter GUI with live telemetry and integrated temperature, encoder, and FRAM sensing.</p>
-      </div>
-
-      <div class="entry">
-        <h3>48V Power Electronics Subsystem</h3>
-        <p class="entry-desc">Bus protection and motor-drive electronics for a 48V/18A system: a latching TPS16851 eFuse, a DRV8876 brushed-motor driver with regenerative-braking analysis, LMR51625 buck regulators, and evaluation of a thermal circuit breaker.</p>
-      </div>
-
-      <div class="entry">
-        <h3>Ultrasonic Time-of-Flight Ranging</h3>
-        <p class="entry-desc">A time-of-flight ranging system built around a TDC1000-C2000 EVM, with 1 MHz signal generation from an Arduino Mega timer and a diode/RC envelope detector for dual-channel echo detection — early groundwork for underwater localization on the vine robot.</p>
-      </div>
-
-      <div class="entry">
-        <h3>SBC Camera Streaming Benchmarks</h3>
-        <p class="entry-desc">A comparative study of camera streaming pipelines across four single-board computers, finding WebRTC-via-mediamtx latency of ~150–200ms versus ~1.3s for RTSP, and working around ISP and pipeline bugs along the way.</p>
-      </div>
-
-      <div class="entry">
-        <h3>Custom ESP32-S3 PCB Bring-Up</h3>
-        <p class="entry-desc">Brought a custom ESP32-S3 board up from bare PCB, tracing a USB enumeration loop to an EN-line brownout, configuring strapping pins, and building out KiCad footprint and 3D-model workflows for future revisions.</p>
-      </div>
-
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <p class="skill-line"><strong>Hardware &amp; PCB design:</strong> Altium Designer, KiCad, LTspice, power electronics (eFuses, buck converters, motor drivers)</p>
-      <p class="skill-line"><strong>Embedded firmware:</strong> ESP-IDF (ESP32-S3, C6, P4), C/C++, RTOS, CAN/TWAI bus</p>
-      <p class="skill-line"><strong>Software &amp; tooling:</strong> Python (Tkinter GUIs, serial/CAN tooling), Onshape (mechanical CAD)</p>
-      <p class="skill-line"><strong>Computational:</strong> QuantumATK (density functional theory)</p>
-    </section>
-
-    <section id="coursework">
-      <h2>Coursework</h2>
-
-      <div class="course-block">
-        <h3>Columbia University</h3>
-        <p class="gpa">GPA 4.07/4.0</p>
-        <div class="course-term">
-          <span class="term-label">Current</span>
-          <ul>
-            <li>Fundamentals of Computer Systems</li>
-            <li>Signals and Systems</li>
-            <li>Circuit Analysis</li>
-            <li>Solid State Electronics</li>
-          </ul>
-        </div>
-        <div class="course-term">
-          <span class="term-label">Semester II</span>
-          <ul>
-            <li>ELEN3331 — Electronic Circuits</li>
-            <li>ELEN3083E — Electronic Circuits Laboratory</li>
-            <li>APMA2101E — Intro to Applied Mathematics (Diff. Eq. &amp; Linear Algebra)</li>
-            <li>COMS3134W — Data Structures in Java</li>
-            <li>PHYS1602 — Physics II: Thermo, Electricity &amp; Magnetism</li>
-          </ul>
-        </div>
-        <div class="course-term">
-          <span class="term-label">Semester I</span>
-          <ul>
-            <li>ELEN1201 — Intro to Electrical Engineering (A+)</li>
-            <li>APMA2000 — Multivariable Calculus for Engineers (A+)</li>
-            <li>COMS1004 — Intro to CS / Programming in Java (A)</li>
-            <li>PHYS1601 — Physics I: Mechanics and Relativity (A+)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="course-block">
-        <h3>Stanford Online High School</h3>
-        <p class="gpa">GPA 3.98/4.0</p>
-        <div class="course-term">
-          <span class="term-label">University-level coursework</span>
-          <ul>
-            <li>Quantum Computing (Physics) (A)</li>
-            <li>Complex Analysis (Math) (A)</li>
-            <li>Real Analysis (Math) (A)</li>
-            <li>Modern Physics (A)</li>
-            <li>Differential Equations (A)</li>
-            <li>Linear Algebra (A)</li>
-            <li>Light and Heat (Physics) (A)</li>
-            <li>Advanced Topics in CS: Computer Systems (A)</li>
-          </ul>
-        </div>
+    <section id="explore">
+      <h2>Explore My Work</h2>
+      <div class="overview-grid">
+        <a href="projects.html" class="overview-card">
+          <div>
+            <h3>🚀 Projects</h3>
+            <p>Custom PCB designs, ESP32-P4 H.264 video pipelines, Formula SAE electronics, CAN motor rigs, and IoT systems.</p>
+          </div>
+        </a>
+        <a href="awards.html" class="overview-card">
+          <div>
+            <h3>🏆 Awards &amp; Honors</h3>
+            <p>Masayoshi Son Foundation scholarship, CASEF 1st Place (DFT physics research), JSHS 2nd Place, and FIRST Robotics honors.</p>
+          </div>
+        </a>
+        <a href="coursework.html" class="overview-card">
+          <div>
+            <h3>📚 Coursework</h3>
+            <p>University coursework at Columbia University and advanced university-level courses at Stanford Online High School.</p>
+          </div>
+        </a>
+        <a href="resume.html" class="overview-card">
+          <div>
+            <h3>📄 Resume</h3>
+            <p>Comprehensive curriculum vitae covering professional research experience, leadership, technical skills, and education.</p>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section id="honors">
-      <h2>Honors</h2>
-      <ul class="honors-list">
-        <li>Masason Foundation Scholar — full-ride undergraduate scholarship with research funding, since 2021</li>
-        <li>1st Place, Capital Area Science and Engineering Fair — DFT research on monolayer iron on 6H-SiC</li>
-        <li>2nd Place, Physical Science, Pennsylvania Junior Science &amp; Humanities Symposium</li>
-        <li>FIRST Robotics — NYC Regional Finals (2025), Dean's List Semifinals (2024)</li>
-      </ul>
+    <section id="skills-summary">
+      <h2>Core Competencies</h2>
+      <div class="skill-group">
+        <p class="skill-line"><strong>Design &amp; EDA Tools:</strong> Altium Designer, KiCad, LTspice, Onshape (CAD), Synopsys QuantumATK, Git / GitHub</p>
+        <p class="skill-line"><strong>Languages &amp; Protocols:</strong> C/C++, Python, Java, Assembly, I2C, SPI, UART, CAN / TWAI, Bluetooth Low Energy, Wi-Fi, ROS, Android / Kotlin</p>
+        <p class="skill-line"><strong>Hardware &amp; Lab:</strong> Bare-PCB Bring-Up, Oscilloscopes, Function Generators, Multimeters, Power Supplies, Microcontrollers (ESP32-S3/C6/P4, STM32, Arduino), Linux SBCs, SMD Soldering &amp; Crimping</p>
+        <p class="skill-line"><strong>Computational Physics:</strong> Density Functional Theory (DFT), electronic band structure &amp; spintronics simulation</p>
+      </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
       <ul class="contact-list">
-        <li>Email: <a href="mailto:kay2125@columbia.edu">kay2125@columbia.edu</a></li>
-        <li>Email: <a href="mailto:ken.a.yosh@gmail.com">ken.a.yosh@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">linkedin.com/in/ken-yoshida-a84a0724b</a></li>
-        <li>GitHub: <a href="#" target="_blank" rel="noopener">add your username here</a></li>
+        <li><strong>Academic Email:</strong> <a href="mailto:kay2125@columbia.edu">kay2125@columbia.edu</a></li>
+        <li><strong>Personal Email:</strong> <a href="mailto:ken.a.yosh@gmail.com">ken.a.yosh@gmail.com</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">linkedin.com/in/ken-yoshida-a84a0724b</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/kenayoshi" target="_blank" rel="noopener">github.com/kenayoshi</a></li>
+        <li><strong>Location:</strong> 2960 Broadway, New York, NY 10027</li>
       </ul>
     </section>
 
   </main>
 </div>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Ken A. Yoshida. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

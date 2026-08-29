@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Ken A. Yoshida</title>
+  <meta name="description" content="Hardware, PCB design, embedded systems, firmware, and computational physics projects by Ken A. Yoshida.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-title">Ken A. Yoshida</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html">Introduction</a>
+      <a href="awards.html">Awards</a>
+      <a href="projects.html" class="active" aria-current="page">Projects</a>
+      <a href="coursework.html">Coursework</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+      <div class="avatar" aria-label="Ken A. Yoshida initials">KY</div>
+      <h1>Ken A. Yoshida</h1>
+      <p class="role">Electrical Engineering &amp; Computer Science<br>Columbia University</p>
+      <ul class="meta-list">
+        <li><span>📍</span> New York, NY</li>
+        <li><span>🏛️</span> Columbia University</li>
+        <li><span>🎓</span> Class of 2029</li>
+      </ul>
+      <ul class="social-list">
+        <li><a href="mailto:kay2125@columbia.edu">✉️ Email (Columbia)</a></li>
+        <li><a href="mailto:ken.a.yosh@gmail.com">✉️ Email (Personal)</a></li>
+        <li><a href="https://www.linkedin.com/in/ken-yoshida-a84a0724b/" target="_blank" rel="noopener">💼 LinkedIn</a></li>
+        <li><a href="https://github.com/kenayoshi" target="_blank" rel="noopener">🐙 GitHub</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+
+    <div class="page-header">
+      <h2>Engineering &amp; Research Projects</h2>
+      <p class="page-desc">Custom PCBs, embedded systems, power electronics, motor control, and research systems</p>
+    </div>
+
+    <section id="embedded-robotics">
+      <h2>Embedded Systems &amp; Robotics</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>ESP32-P4 H.264 Camera Stream</h3>
+          <span class="entry-date">2026</span>
+        </div>
+        <p class="entry-desc">
+          A multi-board embedded video pipeline targeting live 1080p@30fps hardware H.264 video encoding over TCP. Implemented on a Waveshare ESP32-P4 + ESP32-C6 combo board paired with an OV5647 CSI camera sensor, resolving early-silicon errata and establishing a reliable, repeatable build workflow for high-throughput embedded streaming.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">ESP32-P4</li>
+          <li class="tag">ESP-IDF</li>
+          <li class="tag">H.264</li>
+          <li class="tag">TCP/IP</li>
+          <li class="tag">C/C++</li>
+          <li class="tag">Bring-Up</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Vine Robot Electronics &amp; Underwater AFE</h3>
+          <span class="entry-date">Stanford CHARM Lab &middot; 2026</span>
+        </div>
+        <p class="entry-desc">
+          Engineered electrical systems for a soft vine robotic platform designed for pipe inspection under Prof. Allison Okamura. Designed a compact power-management and motor-control PCB routing CAN for high-reliability motor control and I2C for environmental sensors. Built a custom analog front end (AFE) for 1 MHz ultrasonic transducers to enable acoustic localization in low-visibility underwater environments.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">Altium Designer</li>
+          <li class="tag">CAN Bus</li>
+          <li class="tag">I2C</li>
+          <li class="tag">Ultrasonic AFE</li>
+          <li class="tag">ESP32</li>
+          <li class="tag">Robotics</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Formula SAE Shutdown-Circuit Automated Tester</h3>
+          <span class="entry-date">Columbia Formula SAE &middot; 2025 – Present</span>
+        </div>
+        <p class="entry-desc">
+          Designed a dedicated test PCB to automate end-to-end verification of the formula racecar's high-voltage safety shutdown loop. Replaced manual multi-point probing, reducing comprehensive pre-race testing time by approximately 30x while increasing fault diagnosis accuracy. Simulated in LTspice, designed in Altium Designer, and driven by modular C firmware.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">Altium Designer</li>
+          <li class="tag">LTspice</li>
+          <li class="tag">C Firmware</li>
+          <li class="tag">Automotive Safety</li>
+          <li class="tag">FSAE</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Dual BLDC + Stepper CAN Control Rig</h3>
+          <span class="entry-date">2025</span>
+        </div>
+        <p class="entry-desc">
+          An integrated motor test rig featuring an ESP32-S3 controlling an A4988 stepper motor (calibrated to 0.988 mm/rev precision) alongside two AK-series brushless DC (BLDC) motors communicating over a 1 Mbit/s CAN/TWAI bus. Controlled via a custom Python/Tkinter desktop GUI with real-time bidirectional telemetry, thermal monitoring, magnetic encoder feedback, and non-volatile FRAM data logging.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">ESP32-S3</li>
+          <li class="tag">CAN / TWAI (1 Mbit)</li>
+          <li class="tag">Python / Tkinter</li>
+          <li class="tag">BLDC Motors</li>
+          <li class="tag">FRAM</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Custom ESP32-S3 Hardware Bring-Up &amp; EDA Workflow</h3>
+          <span class="entry-date">2024 – 2025</span>
+        </div>
+        <p class="entry-desc">
+          Brought up a custom ESP32-S3 development board from bare fabrication, diagnosing and resolving a USB enumeration loop caused by an EN-line power brownout, setting up hardware strapping pins, and establishing an automated KiCad footprint and 3D component model workflow for rapid revision cycles.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">KiCad</li>
+          <li class="tag">Hardware Debugging</li>
+          <li class="tag">Oscilloscopes</li>
+          <li class="tag">ESP32-S3</li>
+          <li class="tag">SMD Assembly</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section id="power-analog">
+      <h2>Power Electronics, RF &amp; Analog Design</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>48V / 18A Power Electronics Subsystem</h3>
+          <span class="entry-date">2025</span>
+        </div>
+        <p class="entry-desc">
+          Designed and evaluated DC bus protection and motor drive electronics for a high-power 48V/18A subsystem. Implemented a latching TPS16851 eFuse for transient and overcurrent protection, integrated a DRV8876 brushed-motor driver with regenerative braking analysis, engineered LMR51625 high-efficiency buck regulators, and characterized thermal circuit breaker trip curves.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">Power Electronics</li>
+          <li class="tag">TPS16851 eFuse</li>
+          <li class="tag">LTspice</li>
+          <li class="tag">Buck Regulators</li>
+          <li class="tag">Circuit Protection</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Ultrasonic Time-of-Flight (ToF) Ranging System</h3>
+          <span class="entry-date">2025</span>
+        </div>
+        <p class="entry-desc">
+          Built an acoustic time-of-flight distance measurement system utilizing a Texas Instruments TDC1000-C2000 evaluation module. Engineered a 1 MHz excitation burst from an Arduino Mega hardware timer and created a passive diode/RC envelope detection circuit for dual-channel ultrasonic echo capture, serving as foundational research for underwater acoustic positioning.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">Analog Front-End</li>
+          <li class="tag">TDC1000</li>
+          <li class="tag">Signal Conditioning</li>
+          <li class="tag">Arduino Mega</li>
+          <li class="tag">Acoustics</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>SBC Camera Streaming &amp; WebRTC Benchmarks</h3>
+          <span class="entry-date">2025</span>
+        </div>
+        <p class="entry-desc">
+          Conducted a comprehensive benchmark of video capture and transmission latencies across four single-board computers (SBCs). Evaluated H.264/H.265 encoding pipelines, demonstrating that WebRTC via MediaMTX achieved ultra-low latencies of ~150–200ms compared to ~1.3s for traditional RTSP streams, while documenting workarounds for hardware ISP and Linux V4L2 pipeline bottlenecks.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">Embedded Linux</li>
+          <li class="tag">WebRTC</li>
+          <li class="tag">MediaMTX</li>
+          <li class="tag">RTSP</li>
+          <li class="tag">Benchmarking</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section id="research-iot">
+      <h2>Scientific Research &amp; IoT Systems</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Monolayer Iron on 6H-SiC Spintronics &amp; DFT Simulation</h3>
+          <span class="entry-date">Juniata College &middot; 2023 – 2025</span>
+        </div>
+        <p class="entry-desc">
+          Investigated the electronic band structure, magnetic moments, and atomic geometry of monolayer iron deposited on a 6H silicon carbide (SiC) polar substrate using Density Functional Theory (DFT) in Synopsys QuantumATK under Prof. William Blades. Recognized with 1st Place at CASEF and 2nd Place in Physical Sciences at the Pennsylvania JSHS.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">Synopsys QuantumATK</li>
+          <li class="tag">Density Functional Theory</li>
+          <li class="tag">Solid State Physics</li>
+          <li class="tag">Spintronics</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Patent-Pending IoT Kiln Telemetry &amp; Biochar Monitor</h3>
+          <span class="entry-date">PlantVillage &middot; 2023 – 2025</span>
+        </div>
+        <p class="entry-desc">
+          Developed two patent-pending IoT telemetry instruments measuring high-temperature kilns (>500°C) for smallholder farmers producing carbon-sequestering biochar. Implemented custom on-device flash compression and downsampling algorithms enabling months of continuous logging in off-grid regions without cellular coverage, syncing automatically over Bluetooth Low Energy to an Android mobile app.
+        </p>
+        <ul class="tag-list">
+          <li class="tag">IoT</li>
+          <li class="tag">Bluetooth Low Energy</li>
+          <li class="tag">Android / Kotlin</li>
+          <li class="tag">Flash Memory</li>
+          <li class="tag">Patent-Pending</li>
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Ken A. Yoshida. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
